@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mahsulotlar Ro'yxati</title>
+    <style>
+       
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            margin: 0;
+            padding: 10px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+       
+        #product-form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            transition: transform 0.3s ease;
+        }
+
+       
+        #product-form div {
+            margin-bottom: 15px;
+        }
+
+        #product-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        #product-form input {
+            width: 100%;
+            padding: 10px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        #product-form input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        #product-form button {
+            background-color: #4a90e2;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #product-form button:hover {
+            background-color: #357ABD;
+            transform: scale(1.05);
+        }
+
+      
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+         
+        .search-bar label {
+            margin-right: 10px;
+            font-weight: bold;
+           
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+      
+        .product-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        #product-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        #product-table thead {
+            background-color: #4a90e2;
+            color: #fff;
+        }
+
+        #product-table th, #product-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #product-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        #product-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+       
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+      
+        @media (max-width: 768px) {
+            #product-form, .search-bar, .product-list {
+                padding: 10px;
+            }
+
+            #product-form input, .search-bar input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mahsulotlar Ro'yxati</h1>
+
+   
+    <form id="product-form">
+        <div>
+            <label for="name">Mahsulot Nomi:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div>
+            <label for="price">Narxi:</label>
+            <input type="number" id="price" required>
+        </div>
+        <div>
+            <label for="type">Turi:</label>
+            <input type="text" id="type" required>
+        </div>
+        <div>
+            <label for="unit">O'lchov Birligi:</label>
+            <input type="text" id="unit" required>
+        </div>
+        <div>
+            <label for="arrivalDate">Kelgan Sanasi:</label>
+            <input type="date" id="arrivalDate" required>
+        </div>
+        <div>
+            <label for="source">Kim Tomonidan Kelgani:</label>
+            <input type="text" id="source" required>
+        </div>
+        <button type="submit">Qo'shish</button>
+    </form>
+
+   
+    <div class="search-bar">
+        <label for="search">Mahsulot Qidirish:</label>
+        <input type="text" id="search" placeholder="Mahsulot nomini kiriting...">
+    </div>
+
+   
+    <div class="product-list">
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th>Nomi</th>
+                    <th>Narxi</th>
+                    <th>Turi</th>
+                    <th>O'lchov Birligi</th>
+                    <th>Kelgan Sanasi</th>
+                    <th>Kelgan Manba</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+    
+    <script src="app.js"></script>
+</body>
+</html>
